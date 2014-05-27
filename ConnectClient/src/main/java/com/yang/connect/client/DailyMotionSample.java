@@ -16,6 +16,11 @@ package com.yang.connect.client;
 
 //package com.google.api.services.samples.dailymotion.cmdline.simple;
 
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.util.List;
+
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
@@ -25,11 +30,9 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
-//import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.client.util.Key;
-
-import java.util.List;
+//import com.google.api.client.json.jackson.JacksonFactory;
 
 /**
  * Simple example for the <a
@@ -40,8 +43,18 @@ import java.util.List;
  */
 public class DailyMotionSample {
 
-	static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+	//static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+	static final HttpTransport HTTP_TRANSPORT;
 	static final JsonFactory JSON_FACTORY = new JacksonFactory();
+	
+	static {
+		// set proxy
+		int PROXY_PORT = 3128;
+		String PROXY_HOST = "moatls";	
+		
+		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST , PROXY_PORT));
+		HTTP_TRANSPORT = new NetHttpTransport.Builder().setProxy(proxy).build();
+	}
 
 	/** Represents a video feed. */
 	public static class VideoFeed {
@@ -77,6 +90,9 @@ public class DailyMotionSample {
 		@Key
 		public String fields;
 	}
+
+	
+	
 
 	private static void run() throws Exception {
 		HttpRequestFactory requestFactory = HTTP_TRANSPORT
