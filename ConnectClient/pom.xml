@@ -1,27 +1,44 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>Yang</groupId>
-  <artifactId>ConnectClient</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<groupId>Yang</groupId>
+	<artifactId>ConnectClient</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>ConnectClient</name>
-  <url>http://maven.apache.org</url>
+	<name>ConnectClient</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-
+	<!-- Critical: Please see https://code.google.com/p/google-api-java-client/wiki/Setup 
+		for app and android setup -->
 	<dependencies>
 		<dependency>
+			<!-- On Android, you will need to explicitly exclude unused dependencies: -->
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>4.0.4.RELEASE</version>
 		</dependency>
 
+		<!-- If on Android, google-api-client-android MUST BE USED INSTEAD. -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.18.0-rc</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.google.api.client</groupId> <artifactId>google-api-client</artifactId> 
+			<version>1.4.0-alpha</version> </dependency> -->
+
+		<dependency>
+			<groupId>com.google.http-client</groupId>
+			<artifactId>google-http-client-jackson</artifactId>
+			<version>1.15.0-rc</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
