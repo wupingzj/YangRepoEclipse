@@ -16,15 +16,22 @@ package com.yang.connect.client;
 
 //package com.google.api.services.samples.dailymotion.cmdline.simple;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.List;
+//import java.util.logging.ConsoleHandler;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+import java.util.logging.ConsoleHandler;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpRequestInitializer;
+import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -32,6 +39,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.client.util.Key;
+
 //import com.google.api.client.json.jackson.JacksonFactory;
 
 /**
@@ -42,17 +50,24 @@ import com.google.api.client.util.Key;
  * @author Yaniv Inbar
  */
 public class DailyMotionSample {
-
-	//static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-	static final HttpTransport HTTP_TRANSPORT;
-	static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	
+private static final Logger LOGGER = Logger.getLogger(DailyMotionSample.class);
+
+	// static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+	static HttpTransport HTTP_TRANSPORT;
+	static final JsonFactory JSON_FACTORY = new JacksonFactory();
+
 	static {
+		HTTP_TRANSPORT = new NetHttpTransport();
+		// initProxy();
+	}
+
+	private static void initProxy() {
 		// set proxy
 		int PROXY_PORT = 3128;
-		String PROXY_HOST = "moatls";	
-		
-		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST , PROXY_PORT));
+		String PROXY_HOST = "moatls";
+
+		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(PROXY_HOST, PROXY_PORT));
 		HTTP_TRANSPORT = new NetHttpTransport.Builder().setProxy(proxy).build();
 	}
 
@@ -91,22 +106,40 @@ public class DailyMotionSample {
 		public String fields;
 	}
 
-	
-	
-
 	private static void run() throws Exception {
-		HttpRequestFactory requestFactory = HTTP_TRANSPORT
-				.createRequestFactory(new HttpRequestInitializer() {
-					//@Override
-					public void initialize(HttpRequest request) {
-						request.setParser(new JsonObjectParser(JSON_FACTORY));
-					}
-				});
-		DailyMotionUrl url = new DailyMotionUrl(
-				"https://api.dailymotion.com/videos/");
+		//setupLogging();
+
+		HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(new HttpRequestInitializer() {
+			// @Override
+			public void initialize(HttpRequest request) {
+				request.setParser(new JsonObjectParser(JSON_FACTORY));
+			}
+		});
+		DailyMotionUrl url = new DailyMotionUrl("https://api.dailymotion.com/videos/");
 		url.fields = "id,tags,title,url";
 		HttpRequest request = requestFactory.buildGetRequest(url);
-		VideoFeed videoFeed = request.execute().parseAs(VideoFeed.class);
+
+		// log request details
+		LOGGER.info("**** this is request" + request.toString());
+		
+		LOGGER.debug("**** this is requestXXX" + request.toString());
+		
+		LOGGER.info("**** this is requestBBB" + request.toString());
+		if (true) {
+			return;
+		}
+
+		HttpResponse response = request.execute();
+		
+		
+
+		VideoFeed videoFeed;
+		try {
+			videoFeed = response.parseAs(VideoFeed.class);
+		} finally {
+			response.disconnect();
+		}
+
 		if (videoFeed.list.isEmpty()) {
 			System.out.println("No videos found.");
 		} else {
@@ -116,8 +149,7 @@ public class DailyMotionSample {
 			System.out.println(videoFeed.list.size() + " videos found:");
 			for (Video video : videoFeed.list) {
 				System.out.println();
-				System.out
-						.println("-----------------------------------------------");
+				System.out.println("-----------------------------------------------");
 				System.out.println("ID: " + video.id);
 				System.out.println("Title: " + video.title);
 				System.out.println("Tags: " + video.tags);
@@ -130,6 +162,8 @@ public class DailyMotionSample {
 		try {
 			try {
 				run();
+				System.out.println("*** Done ****");
+
 				return;
 			} catch (HttpResponseException e) {
 				System.err.println(e.getMessage());
@@ -139,4 +173,21 @@ public class DailyMotionSample {
 		}
 		System.exit(1);
 	}
+
+//	private static void setupLogging() {
+//		// Configure the logging mechanisms.
+//		Logger httpLogger = Logger.getLogger("com.google.api.client.http.HttpRequest");
+//		httpLogger.setLevel(Level.ALL);
+//
+//		Logger xmlLogger = Logger.getLogger("com.google.gdata.util.XmlParser");
+//		xmlLogger.setLevel(Level.ALL);
+//		
+//		// Create a log handler which prints all log events to the console.
+//		ConsoleHandler logHandler = new ConsoleHandler();
+//		logHandler.setLevel(Level.ALL);
+//		
+//		httpLogger.addHandler(logHandler);
+//		xmlLogger.addHandler(logHandler);
+//
+//	}
 }
