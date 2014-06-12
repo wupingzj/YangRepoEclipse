@@ -1,2 +1,4 @@
 ssl.log.*
+NetworkUsage/
+TestServer/data
 

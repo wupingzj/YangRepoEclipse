@@ -1,14 +1,18 @@
 package com.yang.connect.client;
 
+import com.yang.connect.client.util.LogUtils;
+
 import junit.framework.TestCase;
 
 public class ConnectClientTest extends TestCase {
 	
 	public void testHttpGET() {
 		ConnectClientImpl client = new ConnectClientImpl();
-		String url = "www.google.com";
+		//String url = "https://www.google.com";
+		String url = "https://www.google.com";
 		
-		client.httpGET(url);
+		String httpGET = client.httpGET(url);
+		LogUtils.info(httpGET);
 	}
 
 	/*@Ignore("TO BE IMPLEMENTED")

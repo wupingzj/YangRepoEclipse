@@ -1,0 +1,3 @@
+int response = conn.getResponseCode();
+	        LogUtils.debug("The response is: " + response);
+	        is = conn.getInputStream();
