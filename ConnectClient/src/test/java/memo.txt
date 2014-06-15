@@ -1,3 +1,12 @@
+1. 
 int response = conn.getResponseCode();
 	        LogUtils.debug("The response is: " + response);
 	        is = conn.getInputStream();
+
+	        
+2. Sample cookie string:
+
+	String cookieString1 = "Set-Cookie: LSID=DQAAAK…Eaem_vYg; Path=/accounts; Expires=Wed, 13 Jan 2021 22:23:01 GMT; Secure; HttpOnly";		
+	String cookieString2 = "Set-Cookie: HSID=AYQEVn….DKrdst; Domain=.foo.com; Path=/; Expires=Wed, 13 Jan 2021 22:23:01 GMT; HttpOnly";
+	String cookieString3 = "Set-Cookie: SSID=Ap4P….GTEq; Domain=foo.com; Path=/; Expires=Wed, 13 Jan 2021 22:23:01 GMT; Secure; HttpOnly";
+ 
