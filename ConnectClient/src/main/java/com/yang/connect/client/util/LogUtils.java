@@ -18,8 +18,8 @@ public class LogUtils {
 	//private static LogUtilsJavaLogging delegate = new LogUtilsJavaLogging();
 	private static LogUtilsLog4j delegate = new LogUtilsLog4j();
 	
-	public static void error(String msg) {
-		delegate.error(msg);
+	public static void error(String msg, Exception e) {
+		delegate.error(msg, e);
 	}
 	
 	public static void debug(String msg) {

@@ -6,9 +6,10 @@ import java.util.logging.Logger;
 public class LogUtilsJavaLogging {
 private final static Logger LOGGER = Logger.getLogger(LogUtilsJavaLogging.class.getName());
 	
-	public void error(String msg) {
+	public void error(String msg, Exception e) {
 		//Log.d(DEBUG_TAG, "The response is: " + response);
-		LOGGER.severe(msg);
+		//LOGGER.severe(msg);
+		LOGGER.log(Level.SEVERE, msg, e);
 	}
 	
 	public void debug(String msg) {

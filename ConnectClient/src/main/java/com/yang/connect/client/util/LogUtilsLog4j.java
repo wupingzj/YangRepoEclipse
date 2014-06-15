@@ -5,9 +5,9 @@ import org.apache.log4j.Logger;
 public class LogUtilsLog4j {
 	private static final Logger LOGGER = Logger.getLogger(LogUtilsLog4j.class);
 
-	public void error(String msg) {
+	public void error(String msg, Exception e) {
 		// Log.d(DEBUG_TAG, "The response is: " + response);
-		LOGGER.error(msg);
+		LOGGER.error(msg, e);
 	}
 
 	public void debug(String msg) {

@@ -55,9 +55,10 @@ public class ConnectClientImpl implements ConnectClient {
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
-			LogUtils.error(e.getMessage());
-			return "Unable to retrieve web page. Error:" + e.getMessage();
+			//e.printStackTrace();
+			String msg = "Unable to retrieve web page. Error:" + e.getMessage();
+			LogUtils.error(msg, e);
+			return msg;
 		}
 	}
 
@@ -81,6 +82,7 @@ public class ConnectClientImpl implements ConnectClient {
 					br.close();
 				} catch (IOException e) {
 					e.printStackTrace();
+					LogUtils.error("Failed to close the BufferedReader.", e);
 				}
 			}
 		}
