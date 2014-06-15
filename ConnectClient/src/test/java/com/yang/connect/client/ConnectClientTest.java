@@ -12,6 +12,7 @@ import java.util.Map;
 
 import junit.framework.TestCase;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -19,15 +20,41 @@ import com.yang.connect.client.util.LogUtils;
 
 public class ConnectClientTest extends TestCase {
 
+	/**
+	 * This test case shows that cookies are stored in the cookieStore of cookieManager.
+	 * 
+	 * Different cookieManagers have different cookieStore. 
+	 * To share cookies between connections, the same cookieManager (i.e. cookieStore) must be used.  
+	 */
 	@Test
 	public void testHttpGET() {
-		ConnectClientImpl client = new ConnectClientImpl();
-		 String url = "http://www.google.com";
-		url = "https://www.google.com";
-		//url = "http://www.google-analytics.com/analytics.js";
+		ConnectClient connectClient = ConnectClientImpl.getInstance();
 		
-		String httpGET = client.httpGET(url);
+		String url1 = "http://www.google.com";
+		//String url2 = url1;
+		String url2 = "https://www.google.com";
+		//String url3 = "http://www.google-analytics.com/analytics.js";
+		String url3 = "http://www.tinybeans.com.au";
+		
+		
+		LogUtils.info("******** First Round HTTPGET **********");
+		String first = doHttpGET(connectClient, url1);
+		
+		LogUtils.info("******** Second Round HTTPGET ********");
+		String second = doHttpGET(connectClient, url2);
+		
+		LogUtils.info("******** Third Round HTTPGET ********");
+		String third = doHttpGET(connectClient, url3);
+		
+		
+		// Assert.assertEquals(first, second);
+	}
+	
+	public String doHttpGET(ConnectClient connectClient, String url) {
+		 
+		String httpGET = connectClient.httpGET(url);
 		LogUtils.info(httpGET);
+		return httpGET;
 	}
 
 	@Test

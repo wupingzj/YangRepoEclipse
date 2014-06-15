@@ -17,15 +17,24 @@ import java.util.List;
 import com.yang.connect.client.util.LogUtils;
 
 public class ConnectClientImpl implements ConnectClient {
-	CookieManager cookieManager = new CookieManager();
+	private CookieManager cookieManager = new CookieManager();
 	
-	public ConnectClientImpl() {
-		setup();
+	/**
+	 * Makes this class a singleton.
+	 */
+	private static ConnectClient connectClient = new ConnectClientImpl() ;
+	public static ConnectClient getInstance() {
+		return connectClient;
 	}
 	
-	private void setup() {
+	/**
+	 * Note: This constructor sets system-wide cookie handler SHARED BY ALL CONNECTIONS.
+	 */
+	private ConnectClientImpl() {
 		cookieManager = new CookieManager();
 		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
+		
+		// *************** Sets system-wide cookie handler SHARED BY ALL CONNECTIONS ****************
 		CookieHandler.setDefault(cookieManager);
 	}
 
