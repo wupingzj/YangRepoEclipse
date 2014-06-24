@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Please enter your credentials to login</title>
+		<meta name="viewport" content="width=1150">
+			<meta name="apple-mobile-web-app-capable" content="yes">
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+					<meta name="description"
+						content="The easiest way to record & share your pregnancy & baby photos, moments & milestones. Create beautiful photo books of your children’s lives. Free parenting app.">
+						<meta name="keywords"
+							content="Baby Journal, Pregnancy Journal, Online Baby Journal, Private Social Network, Baby Memory Book, Baby Album, Baby Photos">
+							<meta name="apple-itunes-app" content="app-id=521633042">
+								<meta name="p:domain_verify" content="e26c54eb480a20b22d4616ede98d8d86" />
+								<link rel="shortcut icon" type="image/png" href="/public/images/favicon.png">
+									<link rel="stylesheet" type="text/css" media="screen"
+										href="/public/stylesheets/tipTip.css">
+										<link rel="stylesheet" type="text/css" media="screen"
+											href="/public/stylesheets/ui-default.css">
+											<link rel="stylesheet" type="text/css" media="screen"
+												href="/public/javascripts/fancybox/jquery.fancybox-1.3.4.css">
+												<link rel="stylesheet" type="text/css" media="screen"
+													href="/public/javascripts/coin-slider/coin-slider-styles.css">
+													<link rel="stylesheet" type="text/css" media="screen"
+														href="/public/stylesheets/tinybeans-v2.css">
+														<script src="/public/javascripts/browser.js" type="text/javascript"
+															charset="utf-8"></script>
+														<script src="/public/javascripts/util.js" type="text/javascript"
+															charset="utf-8"></script>
+														<script
+															src="https://www.google.com/jsapi?key=ABQIAAAA-65RoZdP096O0d-zCaxEbBQaXxNG17BxGNZQ2bDkOrlls3O6_RTg8LzM1VBD8hXpNC_C3kCcXgdaTw"
+															type="text/javascript"></script>
+														<script
+															src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+														<script src="/public/javascripts/jquery.tmpl.min.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/jquery.tipTip.minified.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/json2.js" type="text/javascript"
+															charset="utf-8"></script>
+														<script src="/public/javascripts/jquery.slides.min.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/jquery.blur.min.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/jquery.form.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/spinner.min.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/jquery.spin.min.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script
+															src="/public/javascripts/fancybox/jquery.fancybox-1.3.4.pack.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/coin-slider/coin-slider.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script
+															src="/public/javascripts/fancybox/jquery.easing-1.3.pack.js"
+															type="text/javascript" charset="utf-8"></script>
+														<script src="/public/javascripts/tinybeans.js"
+															type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body id="login" class="modal">  <!-- Google Tag Manager -->
+		<noscript>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-PT8VSZ"
+				height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new
+			Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-PT8VSZ');</script>  <!-- End Google Tag Manager -->
+		<div class="wrap">
+			<div id="logo">
+				<a href="/">
+					<div class="img">
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="topnav">
+			<div class="wrap">
+				<div class="links">
+					<ul>
+						<li>
+							<a href="/site/about">About us</a>
+						</li>
+						<li>
+							<a href="http://blogs.tinybeans.com/blog/">Blog</a>
+						</li>
+						<li>
+							<a href="http://blogs.tinybeans.com/photo-ideas/">Photo Ideas</a>
+						</li>
+						<li>
+							<a href="/photobooks">Photo Books</a>
+						</li>
+						<li>
+							<a href="https://tinybeans.com/login">Log in</a>
+						</li>
+						<li class="join">
+							<a href="https://tinybeans.com/signup">Join now</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="topnav-shadow">
+		</div>    <!--<div class="wrap"> -->      <!--<div id="recommend"> -->        <!---->        <!---->          <!--<a href="mailto:?subject=Tinybeans%20is%20awesome!">Love Tinybeans? Tell 
+			your friends about us.</a> -->        <!---->      <!--</div> -->    <!--</div> -->
+		<div id="page">
+			<div id="content">
+				<h1>Please enter your credentials to login</h1>
+				<div id="messages">
+				</div>
+				<div class="fields">
+					<div class="tape blue top-right"></div>
+					<div class="tape pink bottom-left"></div>
+					<div id="fb-root"></div>
+					<script> window.fbAsyncInit = function () { FB.init({
+						appId:'358245560878128', status:true, xfbml:true }); }; (function
+						(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if
+						(d.getElementById(id)) { return; } js = d.createElement(s); js.id
+						= id; js.src = "//connect.facebook.net/en_US/all.js";
+						fjs.parentNode.insertBefore(js, fjs); }(document, 'script',
+						'facebook-jssdk'));</script>
+					<p class="blurb">To login simply enter your unique username and password.
+						If you've previously logged in with Facebook, you may simply click
+						on the Facebook button instead.</p>
+					<form action="/authenticate" method="post" accept-charset="utf-8"
+						enctype="application/x-www-form-urlencoded" id="loginForm">
+						<input type="hidden" name="authenticityToken"
+							value="882f8f6863ae02a4f41c7cdfff7bdeb2f5732d83">
+							<div class="contents">
+								<div class="login">
+									<input id="facebookAccessToken" name="facebookAccessToken"
+										type="hidden" value="" />
+									<div id="username-layout"
+										class="layout right-layout inputText-layout required-layout required">
+										<label for="username">Username</label>
+										<span class="field">
+											<input type="text" id="username" name="username" value=""
+												class="inputText required" />
+										</span>
+									</div>
+									<div id="component-1-layout"
+										class="layout right-layout inputText-layout inputPassword-layout required-layout required">
+										<label for="component-1">Password</label>
+										<span class="field">
+											<input type="password" name="password" value=""
+												id="component-1" class="inputText inputPassword required" />
+										</span>
+									</div>
+									<div id="remember-layout" class="layout right-layout checkboxes-layout">
+										<label for="remember">&nbsp;
+										</label>
+										<span class="field">
+											<div class="checkboxes">
+												<div>
+													<input type="checkbox" value="true" id="remember"
+														name="remember" value="" class="checkboxes" />
+													<label for="remember">Keep me logged in</label>
+												</div>
+												<input type="hidden" name="remember" value="false" />
+											</div>
+										</span>
+									</div>
+								</div>
+								<div class="signup">
+									<div>
+										<a href="#" class="facebook">| Login with Facebook</a>
+									</div>
+									<br />
+									<div>
+										<a href="/signup" class="secondary">Or sign up now, it's free!</a>
+									</div>
+								</div>
+							</div>
+							<div class="actions">
+								<div id="component-2-layout" class="layout left-layout wrap-layout">
+									<label for="component-2">&nbsp;
+									</label>
+									<span class="field">
+										<div>
+											<input type="submit" value="Login to Tinybeans" />
+											<a href="/login/help" class="secondary">Help, I can't login!</a>
+										</div>
+									</span>
+								</div>
+							</div>
+					</form>
+					<script type="text/javascript"> $(document).ready(function() {
+						$('.facebook').click(function() { var $this = $(this);
+						FB.login(function(response) { if (response.authResponse) {
+						$('#facebookAccessToken').val(response.authResponse.accessToken);
+						$('#username').css('color', '#fff'); $('#username').val("fb:" +
+						response.authResponse.userID); $('#loginForm').submit(); } else {
+						} }, {
+						scope:'email,publish_stream,user_about_me,user_relationships,user_birthday'});
+						return false; }); });</script>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="col">
+					<div id="footerlogo">
+					</div>
+				</div>
+				<div class="col">
+					<ul>
+						<li>
+							<a href="">Home</a>
+						</li>
+						<li>
+							<a href="/site/about">About Us</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col">
+					<ul>
+						<li>
+							<a href="http://blogs.tinybeans.com/blog" target="_blank">Blog</a>
+						</li>
+						<li>
+							<a href="http://blogs.tinybeans.com/photo-ideas/" target="_blank">Photo
+								Ideas</a>
+						</li>
+						<li>
+							<a href="/site/testimonials">Testimonials</a>
+						</li>
+						<li>
+							<a href="/site/presskit">Press Kit</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col">
+					<ul>
+						<li>
+							<a href="/site/privacy">Privacy</a>
+						</li>
+						<li>
+							<a href="/site/tnc">Terms & Conditions</a>
+						</li>
+						<li>
+							<a href="mailto:info@tinybeans.com">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col download">
+					<a href="http://bit.ly/tinybeansappstore" target="_blank">
+						<img width="140" src="/public/images/ios.gif" />
+					</a>
+					<a href="http://play.google.com/store/apps/details?id=com.tinybeans"
+						target="_blank">
+						<img width="140" src="/public/images/android.gif" />
+					</a>
+					<br />
+				</div>
+			</div>
+			<div id="socialmedia">
+				<ul>
+					<li>
+						<a href="http://twitter.com/tinybeanskids" target="_blank">
+							<img src="/public/images/banner-twitter.png" alt="Twitter" />
+						</a>
+					</li>
+					<li>
+						<a href="http://pinterest.com/tinybeans" target="_blank">
+							<img src="/public/images/banner-pinterest.png" alt="Pinterest" />
+						</a>
+					</li>
+					<li>
+						<a href="http://facebook.com/TinybeansKids" target="_blank">
+							<img src="/public/images/banner-facebook.png" alt="Facebook" />
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
