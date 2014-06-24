@@ -85,7 +85,7 @@ public class ConnectClientTest extends TestCase {
 	private Map<String,Object> getTestParams() {
 		Map<String,Object> params = new LinkedHashMap<String, Object>();
 		params.put("username", "wupingzj");
-		params.put("password", "tinybeans1");
+		params.put("password", "mask");
 		
         /*params.put("name", "Freddie the Fish");
         params.put("email", "fishie@seemail.com");
