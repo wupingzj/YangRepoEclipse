@@ -56,18 +56,8 @@ public class ConnectClientImpl implements ConnectClient {
 
 	public String httpGET(String url) {
 		try {
-			InputStream is = null;
-
-			try {
-				is = sendGET(url);
-				return parseInputStream(is);
-			} finally {
-				if (is != null) {
-					is.close();
-				}
-			}
+			return sendGET(url);
 		} catch (IOException e) {
-			//e.printStackTrace();
 			String msg = "Unable to retrieve web page. Error:" + e.getMessage();
 			LogUtils.error(msg, e);
 			return msg;
@@ -103,7 +93,7 @@ public class ConnectClientImpl implements ConnectClient {
 
 	// Given a string representation of a URL, sets up a connection and gets
 	// an input stream.
-	protected InputStream sendGET(String urlString) throws IOException {
+	protected String sendGET(String urlString) throws IOException {
 		LogUtils.info("*** download data ***");
 		LogUtils.debug("0. Show cookie store");
 		displayCookieStore();
@@ -128,11 +118,13 @@ public class ConnectClientImpl implements ConnectClient {
 		LogUtils.debug("3. Show cookie store");
 		displayCookieStore();
 
-		InputStream stream = con.getInputStream();
+		InputStream is = con.getInputStream();
 		
 		LogUtils.debug("4. Show cookie store");
 		displayCookieStore();
-		return stream;
+		
+		String responseString = parseInputStream(is);
+		return responseString;
 	}
 	
 	protected void displayCookieStore() {
@@ -258,24 +250,37 @@ public class ConnectClientImpl implements ConnectClient {
         
         conn.getOutputStream().write(postDataBytes);
         
-        int response = conn.getResponseCode();
-		LogUtils.debug("The response is: " + response);
-		if (!url.getHost().equals(conn.getURL().getHost())) {
-		       // we were redirected! Kick the user out to the browser to sign on?
-			LogUtils.debug("******* WE ARE REDIRECTED! ********* ");
-		}
+        int responseCode = conn.getResponseCode();
+		LogUtils.debug("The response is: " + responseCode);
+		
 		
 		LogUtils.debug("3. Show cookie store");
 		displayCookieStore();
         
         InputStream is = conn.getInputStream();
 		String responseString = parseInputStream(is);
+		
+		//if (responseCode>=300 && responseCode<400) {
+		if (responseCode == 302 || responseCode == 303) {
+			//TODO - the response code check needs to be re-written carefully
+			String originalHost = url.getHost();
+			String respondedHost = conn.getURL().getHost();
+			//if (originalHost.equals(respondedHost)) {
+			       // we were redirected! Kick the user out to the browser to sign on?
+				LogUtils.info(String.format("******* WE ARE REDIRECTED from %s to %s. ********* ", originalHost, respondedHost));
+				
+				String newLocation = conn.getHeaderField( "Location" );
+				LogUtils.info(String.format("Redirected to %s", newLocation));
+				
+				String redirectedResponseHtml = sendGET(newLocation);
+				
+				LogUtils.info(String.format("Redirected done! Returned: %s", redirectedResponseHtml));
+				LogUtils.debug("4. Show cookie store AFTER POST REDIRECTION.");
+				displayCookieStore();
+		}
 
 		return responseString;
-        
 	}
-	
-	
 	
 	/**
 	 * Converts parameter map to post data string with specified encoding, which is ready to send over wire via http POST.
