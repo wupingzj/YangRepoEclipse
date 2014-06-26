@@ -265,14 +265,31 @@ public class ConnectClientImpl implements ConnectClient {
 
 		// do you want to manually redirect if responseCode is 3XX?
 		if (!autoRedirect) {
+			// NOTE: cannot redirect from HTTP to HTTPS or vice versa
 			redirectManually(responseCode, url, conn);
 		}
 
 		return responseString;
 	}
 
+	private boolean isRedirect(int responseCode) {
+		if (responseCode != HttpURLConnection.HTTP_OK) {
+			if (responseCode == HttpURLConnection.HTTP_MOVED_TEMP || responseCode == HttpURLConnection.HTTP_MOVED_PERM
+					|| responseCode == HttpURLConnection.HTTP_SEE_OTHER)
+				return true;
+		}
+
+		return false;
+	}
+
 	private void redirectManually(int responseCode, URL url, HttpURLConnection conn) throws IOException {
-		if (responseCode == 302 || responseCode == 303) {
+		// TODO
+		// YOU CAN ONLY REDIRECT to the SAME PROTOCOL, i,e, HTTP to HTTP and HTTPS to HTTPS. You cannot redirect to different protocol.
+		// Otherwise, there is serious security concern.
+		// Ref: http://stackoverflow.com/questions/1884230/java-doesnt-follow-redirect-in-urlconnection
+		// http://bugs.java.com/bugdatabase/view_bug.do?bug_id=4620571
+		
+		if (responseCode == 301 || responseCode == 302 || responseCode == 303) {
 			// TODO - the response code check needs to be re-written carefully
 			String originalHost = url.getHost();
 			String respondedHost = conn.getURL().getHost();
